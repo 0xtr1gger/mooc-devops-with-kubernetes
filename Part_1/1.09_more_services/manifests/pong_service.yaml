@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ping-pong-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: ping-pong
+  ports:
+    - port: 2346 # port that the service will expose
+      protocol: TCP
+      targetPort: 5000 # port that the container is listening on

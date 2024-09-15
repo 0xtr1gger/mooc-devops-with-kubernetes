@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-pong-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ping-pong
+  template:
+    metadata:
+      labels:
+        app: ping-pong
+    spec:
+      containers:
+        - name: ping-pong
+          image: doreen01/mooc-ping-pong:1.09_more_services
+          ports:
+          - containerPort: 5000
