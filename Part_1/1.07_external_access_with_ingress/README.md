@@ -1,3 +1,5 @@
+0. For a k3d cluster, I create an Nginx webserver deployment in advance in order to expose Services, as outlined in [this](https://k3d.io/v5.3.0/usage/exposing_services/) Doc 
+
 1. Modify previous version of the Log output script to add a Flask server and an endpoint.
 
 2. Create a new Dockerfile to include Flask.
