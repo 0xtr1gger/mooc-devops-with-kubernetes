@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      volumes:
+        - name: shared-timestamp
+          emptyDir: {}
+      containers:
+        - name: writer
+          image: doreen01/mooc-log-output:1.10_writer
+          volumeMounts:
+          - name: shared-timestamp
+            mountPath: /usr/src/app/files
+        - name: reader
+          image: doreen01/mooc-log-output:1.10_reader
+          volumeMounts:
+          - name: shared-timestamp
+            mountPath: /usr/src/app/files
