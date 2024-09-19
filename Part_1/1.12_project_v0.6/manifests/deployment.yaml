@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment # what is it? this is a deployment
+metadata:
+  name: web-project # name of the deployment as metadata
+spec:
+  replicas: 1 # how many replicas should be there
+  selector:
+    matchLabels:
+      app: web-project
+  template:
+    metadata:
+      labels:
+        app: web-project
+    spec:
+      volumes:
+        - name: shared-image
+          persistentVolumeClaim:
+            claimName: image-claim
+      containers:
+        - name: web-project # specifying the name of the container
+          image: doreen01/web_project:1.12_v0.6 # specifying the image
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/static
+          env:
+            - name: PORT
+              value: "5000"

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes of the Day</title>
+    <style>
+        body {
+            height: 100vh;
+            font-family: sans-serif;
+            background-color: #0c0c0c; 
+            color: white;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+
+            background-image: url('{{ image_path }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+        }
+        h1 {
+            font-size: 25px;
+            font-weight: 300;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            transition: color 0.5s, text-shadow 0.5s;
+        }
+
+        .back {
+            background-color: rgba(0,0,0,0.9);
+            height: 100px;
+            width: 100%;
+            top: 200px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-bottom: 500px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="back">
+        <div class="quotes">
+            <h1 id="quote">Loading quote...</h1>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        const quotes = [
+            "Whatever it takes.",
+            "Hard work beats talent when talent doesn't work hard.",
+            "One day, all those late nights and reasly mornings will pay off.",
+            "If you don't sacrifice for what you want, what you want becomes the sacrifice.",
+            "Work hard until you no longer have to introduce youserlf.",
+            "Everything feels difficult when you're about to level up.",
+            "Don't stop when you're tired. Stop when you're done.",
+            "It's the will, not the skill.",
+            "The best view comes after the hardest climb.",
+            "Dreams don't work until you do.",
+            "Hard work and consistency are the only options.",
+            "Results happen over time, not overnight. Work hard, stay consistent, and be patient.",
+            "The harder you work, the luckier you get.",
+            "Don't tell people your plans. Show them your results.",
+            "Life is what happens when you're busy making other plans.",
+            "What comes easy won't last, what lasts won't come easy.",
+            "Get busy living or get busy dying.",
+            "Stop looking for happiness in the same place you've lost it.",
+            "Fall in love when you're ready, not when you're lonely.",
+            "You miss 100% of the shots you don’t take.",
+            "The future belongs to those who believe in the beauty of their dreams.",
+            "Don't watch the clock; do what it does. Keep going."
+        ];
+
+        function getRandomQuote() {
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function updateQuote() {
+            const randomColor = getRandomColor();
+            document.getElementById('quote').innerText = getRandomQuote();
+            // document.getElementById('quote').style.color = randomColor;
+            document.getElementById('quote').style.textShadow = `0px 0px 10px #fff, 0px 0px 20px ${randomColor}, 0px 0px 30px ${randomColor}, 0px 0px 40px ${randomColor}, 0px 0px 50px ${randomColor}, 0px 0px 70px ${randomColor}`; // Text shadow matches text color
+        }
+
+        // Call the function on page load
+        window.onload = updateQuote;
+    </script>
+</body>
+</html>
