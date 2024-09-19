@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment # what is it? this is a deployment
+metadata:
+  name: web-project # name of the deployment as metadata
+spec:
+  replicas: 1 # how many replicas should be there
+  selector:
+    matchLabels:
+      app: web-project
+  template:
+    metadata:
+      labels:
+        app: web-project
+    spec:
+      containers:
+        - name: web-project # specifying the name of the container
+          image: doreen01/web_project:0.3_web_page # specifying the image
+          env:
+            - name: PORT
+              value: "5000"
