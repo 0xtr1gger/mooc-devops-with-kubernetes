@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .form-container input, .form-container select, .form-container textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .todo-item h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .todo-item .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .status-to-do {
+            background-color: #ffcc00;
+        }
+
+        .status-in-progress {
+            background-color: #ff9800;
+        }
+
+        .status-done {
+            background-color: #4CAF50;
+        }
+
+        .status-canceled {
+            background-color: #f44336;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-change-status {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .btn-completed {
+            background-color: #9C27B0;
+            color: white;
+        }
+
+        .todo-item p {
+            margin: 5px 0;
+        }
+
+        .todo-item .date, .todo-item .category {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .header-img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .category {
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img class="header-img" src="{{ image_path }}" alt="Todo App Header Image">
+
+        <h1>Todo App</h1>
+
+        <!-- Todo Form -->
+        <div class="form-container">
+            <input type="text" id="todo-name" placeholder="Todo Name" required>
+            <textarea id="todo-description" placeholder="Todo Description (optional)"></textarea>
+            <input type="date" id="todo-deadline">
+            <select id="todo-status">
+                <option value="to-do">To be Done</option>
+                <option value="in-progress">In Progress</option>
+                <option value="done">Done</option>
+                <option value="canceled">Canceled</option>
+            </select>
+            <select id="todo-category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="submit" value="Add Todo">
+        </div>
+
+        <!-- Hardcoded Todo List -->
+        <ul class="todo-list">
+            <!-- Todo Item 1 -->
+            <li class="todo-item">
+                <h3>Complete Project Documentation</h3>
+                <p>Description: Write the documentation for the new project release.</p>
+                <p class="date">Created: 2025-02-20 | Deadline: 2025-03-01</p>
+                <p class="category">Category: Work</p>
+                <div class="status status-to-do">To be Done</div>
+                <div class="buttons">
+                    <button class="btn-change-status">Change Status</button>
+                    <button class="btn-completed">Mark Completed</button>
+                </div>
+            </li>
+
+            <!-- Todo Item 2 -->
+            <li class="todo-item">
+                <h3>Buy Groceries</h3>
+                <p>Description: Purchase fruits, vegetables, and household items.</p>
+                <p class="date">Created: 2025-02-25 | Deadline: 2025-02-28</p>
+                <p class="category">Category: Personal</p>
+                <div class="status status-in-progress">In Progress</div>
+                <div class="buttons">
+                    <button class="btn-change-status">Change Status</button>
+                    <button class="btn-completed">Mark Completed</button>
+                </div>
+            </li>
+
+            <!-- Todo Item 3 -->
+            <li class="todo-item">
+                <h3>Cancel Gym Membership</h3>
+                <p>Description: Visit the gym to cancel the membership.</p>
+                <p class="date">Created: 2025-02-15 | Deadline: 2025-03-10</p>
+                <p class="category">Category: Personal</p>
+                <div class="status status-canceled">Canceled</div>
+                <div class="buttons">
+                    <button class="btn-change-status">Change Status</button>
+                    <button class="btn-completed">Mark Completed</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
